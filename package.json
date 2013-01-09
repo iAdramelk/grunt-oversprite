@@ -1,0 +1,29 @@
+{
+    "name": "grunt-spriteimporter",
+    "version": "0.1.0",
+    "description": "Grunt wrapper library for creating sprites and replacing them in css files",
+    "main": "tasks/grunt-spriteimporter.js",
+    "keywords": [
+        "grunt",
+        "gruntplugin",
+        "sprite",
+        "css"
+    ],
+    "author": {
+        "name": "Alexey Ivanov",
+        "email": "iadramelk@gmail.com"
+    },
+    "license": "MIT",
+    "dependencies": {
+        "spritesmith": "https://github.com/Ensighten/spritesmith/archive/master.tar.gz"
+    },
+    "devDependencies": {
+        "grunt": "~0.3.12"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/iAdramelk/grunt-spriteimporter.git"
+        }
+    ]
+}

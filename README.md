@@ -1,81 +1,93 @@
-grunt-spritesmith
-=================
-Grunt library for using [spritesmith](https://github.com/Ensighten/spritesmith), a spritesheet and CSS pre-processor utility.
+grunt-oversprite
+================
 
-Synopsis
---------
-[Spritesmith](https://github.com/Ensighten/spritesmith) accepts a list of images, stiches them together, and returns that image along with a coordinate map of where each image is located and its dimensions.
+Grunt wrapper for [spritesmith](https://github.com/Ensighten/spritesmith).
 
-[Grunt](https://github.com/gruntjs/grunt/) is a node.js based CLI build tool.
+Difference from [grunt-spritesmith](https://github.com/Ensighten/grunt-spritesmith) are following: Instead of creating a set of variables for preprocessor, like stylus, this plugin will take an array of css files and replace old background-images in them to a new sprite paths + image coordinates.
 
-[json2css](https://github.com/twolfson/json2css) converts the output from [Spritesmith](https://github.com/Ensighten/spritesmith) and generates variables and helper functions for hooking into inside of your CSS pre-processor.
 
-When you combine all three of these, you get a grunt plugin that makes maintaining sprites a breeze.
+Installation
+============
 
-Getting Started
----------------
-Install this grunt plugin next to your project's [grunt.js gruntfile](https://github.com/gruntjs/grunt/blob/master/docs/getting_started.md) with: `npm install grunt-spritesmith`
+This is Grunt 0.4.0 plugin (Current release version is 0.3.x). Follow this [instructions](https://github.com/gruntjs/grunt/wiki/Getting-started) to install and use it.
 
-Then add this line to your project's `grunt.js` gruntfile:
+For this plugin to work you need to install one of the following graphics libraries: [node-gm](https://github.com/aheckmann/gm) or [node-canvas](https://github.com/LearnBoost/node-canvas). Follow installation instructions on their pages.
 
-```javascript
-grunt.loadNpmTasks('grunt-spritesmith');
-```
+After that install it with:
+
+    npm install grunt-oversprite
+
+
+For grunt to see it, add this line to your gruntfile:
+
+    grunt.loadNpmTasks('grunt-oversprite');
+
 
 Usage
------
-```js
-grunt.initConfig({
-  'sprite': {
-    'all': {
-      // Sprite files to read in
-      'src': ['public/images/sprites/*.png'],
+=====
 
-      // Location to output spritesheet
-      'destImg': 'public/images/sprite.png',
+For css replace to work you need to follow this rules:
 
-      // Stylus with variables under sprite names
-      'destCSS': 'public/css/sprite_positions.styl',
+  1. "background-image" must be set as separate rule and not as part of "background".
+  2. Script will add "background-position" rule right after but will not remove any existing one. So either not use one in original file, or use it before "background-image".
+  3. If you need to add "background-repeat" of image dimensions, do in manually in the original file.
 
-      // OPTIONAL: Manual override for imgPath specified in CSS
-      'imgPath': '../sprite.png',
+Use the following config:
 
-      // OPTIONAL: Specify algorithm (top-down, left-right, diagonal, alt-diagonal)
-      'algorithm': 'alt-diagonal',
+    grunt.initConfig({
+        oversprite: {
+            // This is are multitask, you can create multiple sprite generators buy copying all 
+            // object with other name, see grunt.js docs for details
+            all: {
+                // List of sprites to create
+                spritelist: [
+                    {
+                        // List of images to add to sprite
+                        'src': [ 'images/*.png' ],
+                        // Address of target image
+                        'dest': 'publish/sprite.png',
+                        // OPTIONAL: Image placing algorithm: top-down, left-right, diagonal, alt-diagonal
+                        'algorithm': 'alt-diagonal',
+                        // OPTIONAL: Rendering engine: auto, canvas, gm
+                        'engine': 'gm',
+                        // OPTIONAL: Preferences for resulting image
+                        'exportOpts': {
+                            // Image formst (buy default will try to use dest extension)
+                            'format': 'png',
+                            // Quality of image (gm only)
+                            'quality': 90
+                        }
+                    },
+                    // Second sprite config
+                    {
+                        'src': [ 'images/img2.jpg', 'images/img3.gif' ],
+                        'dest': 'publish/sprite.jpg',
+                    }
 
-      // OPTIONAL: Specify engine (auto, canvas, gm)
-      'engine': 'canvas',
+                ],
+                // List of css to replace images
+                csslist: [
+                    {
+                        // Source css file
+                        'src':  'style.css',
+                        // Target css file, can be the same as source
+                        'dest': 'style.sprite.css',
+                        // OPTIONAL: Normalization string. Will be added to css dir path, before paths in css. 
+                        // Use if you move the css and paths to images aren't resolving correctly now.
+                        'base': '../blocks/'
+                    },
+                    // Second css config
+                    {
+                        'src':  'style.ie.css',
+                        'dest': 'sprite.ie.css'
+                    }
+                ]
+            }
+        }
 
-      // OPTIONAL: Specify CSS format (inferred from destCSS' extension by default) (stylus, less, json)
-      'cssFormat': 'json',
-
-      // OPTIONAL: Specify img options
-      'imgOpts': {
-         // Format of the image (inferred from destImg' extension by default) (jpg, png)
-         'format': 'png',
-
-         // Quality of image (gm only)
-         'quality': 90
-      }
-    }
-  }
-});
-```
-
-Contributing
-------------
-In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint via [grunt](https://github.com/gruntjs/grunt/) and test via `npm test`.
-
-### Algorithms
-Algorithms are maintained via [twolfson/layout](https://github.com/twolfson/layout). If you would like to add one, please submit it via a pull request.
-
-### Engines and image options
-Engines and image options are maintained via [Ensighten/spritesmith](https://github.com/Ensighten/spritesmith). If you would like to add one, please submit it via a pull request.
-
-### CSS formats
-CSS formats are maintained via [twolfson/json2css](https://github.com/twolfson/json2css). If you would like to add one, please submit it via a pull request.
+    });
 
 License
--------
-Copyright (c) 2012 Ensighten
-Licensed under the MIT license.
+=======
+
+Copyright © 2013 Alexey Ivanov. Licensed under the MIT license.

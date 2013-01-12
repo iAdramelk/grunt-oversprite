@@ -1,0 +1,15 @@
+.class_1 {
+    background-image: url("sprite1.png"); background-position: 50 0;
+}
+
+.class_2 {
+    background-image: url("sprite1.png"); background-position: 0 50;
+}
+
+.class_3 {
+    background-image: url("sprite2.jpg"); background-position: 0 0;
+}
+
+.class_4 {
+    background-image: url("sprite2.jpg"); background-position: 0 50;
+}

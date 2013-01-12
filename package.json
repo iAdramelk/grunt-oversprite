@@ -15,7 +15,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "spritesmith": "https://github.com/Ensighten/spritesmith/archive/master.tar.gz"
+        "spritesmith": "https://github.com/iAdramelk/spritesmith/archive/master.tar.gz"
     },
     "devDependencies": {
         "grunt": "~0.4.0",

@@ -6,14 +6,20 @@ Grunt wrapper for [spritesmith](https://github.com/Ensighten/spritesmith).
 Difference from [grunt-spritesmith](https://github.com/Ensighten/grunt-spritesmith) are following: Instead of creating a set of variables for preprocessor, like stylus, this plugin will take an array of css files and replace old background-images in them to a new sprite paths + image coordinates.
 
 
-Installation
+
+Requirements
 ============
 
 This is Grunt 0.4.0 plugin (Current release version is 0.3.x). Follow this [instructions](https://github.com/gruntjs/grunt/wiki/Getting-started) to install and use it.
 
-For this plugin to work you need to install one of the following graphics libraries: [node-gm](https://github.com/aheckmann/gm) or [node-canvas](https://github.com/LearnBoost/node-canvas). Follow installation instructions on their pages.
+This plugin uses one of these libraries for image manipulations: [gm](https://github.com/aheckmann/gm), [node-canvas](https://github.com/LearnBoost/node-canvas). For them to be installed correctly, you first need to install either [graphicsmagick](http://www.graphicsmagick.org/) image library (for gm), OR cairo, pixiv and node-gyp (for node-canvas, see [instruction](https://github.com/LearnBoost/node-canvas/wiki/_pages) for installation instructions).
 
-After that install it with:
+**Warning!** Plugin will try to install both image libraries, if you don't have all dependency libraries (for BOTH gm and node-canvas) in your system, one of this libraries will probably fails to install and will display errors. It is normal, you can use plugin even is you have only one of them installed.
+
+Installation
+============
+
+After you have all required libraries install it with:
 
     npm install grunt-oversprite
 

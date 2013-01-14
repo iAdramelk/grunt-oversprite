@@ -1,6 +1,6 @@
 {
     "name": "grunt-oversprite",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Grunt plugin for creating sprites and replacing them in css files",
     "main": "tasks/grunt-oversprite.js",
     "keywords": [
@@ -15,12 +15,11 @@
     },
     "license": "MIT",
     "dependencies": {
-        "spritesmith": "https://github.com/iAdramelk/spritesmith/archive/master.tar.gz"
+        "spritesmith": "0.3.5"
     },
     "devDependencies": {
         "grunt": "~0.4.0",
-        "gm": "*",
-        "grunt-contrib-jshint": "*"
+        "grunt-contrib-jshint": "0.3.5"
     },
     "repositories": [
         {

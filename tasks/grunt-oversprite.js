@@ -140,8 +140,7 @@ module.exports = function ( grunt ) {
 
                         newPath = newPath.replace( /\\/ig, '/' );
 
-                        data = data.replace( resources[x], 'background-image: url("' + newPath + '"); background-position: ' +  img.x + ' ' + img.y + ';' );
-
+                        data = data.replace( resources[x], 'background-image: url("' + newPath + '"); background-position: ' +  img.x + 'px -' + img.y + 'px;' );
                     }
 
                 }

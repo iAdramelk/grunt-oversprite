@@ -93,6 +93,11 @@ Use the following config:
 
     });
 
+Changelog
+=========
+
+### 0.1.4. Fixed x offset than using non-default algorithm. Thanks to @diorcety .
+
 License
 =======
 

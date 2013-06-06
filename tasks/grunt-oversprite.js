@@ -94,7 +94,7 @@ module.exports = function ( grunt ) {
 
                     for ( var key in result.coordinates ) {
 
-                        var newKey = path.join( process.cwd(), key );
+                        var newKey = path.join( process.cwd(), key ).toLowerCase();
 
                         imageReplaces[ newKey ] = tmpResult[ key ];
 
@@ -131,6 +131,7 @@ module.exports = function ( grunt ) {
                     pathToResource = resources[x].replace( regex, '$1' );
 
                     absolutePath = ( base ) ? path.join( base, pathToResource ) : path.join( dir, pathToResource );
+                    absolutePath = absolutePath.toLowerCase();
 
                     if ( imageReplaces[ absolutePath ] !== undefined ) {
 

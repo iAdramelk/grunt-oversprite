@@ -52,8 +52,8 @@ Use the following config:
                         'src': [ 'images/*.png' ],
                         // Address of target image
                         'dest': 'publish/sprite.png',
-                        // OPTIONAL: Image placing algorithm: top-down, left-right, diagonal, alt-diagonal
-                        'algorithm': 'alt-diagonal',
+                        // OPTIONAL: Image placing algorithm: top-down, left-right, diagonal, alt-diagonal, binary-tree
+                        'algorithm': 'binary-tree',
                         // OPTIONAL: Rendering engine: auto, canvas, gm
                         'engine': 'gm',
                         // OPTIONAL: Preferences for resulting image

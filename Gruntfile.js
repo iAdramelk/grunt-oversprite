@@ -34,7 +34,7 @@ module.exports = function (grunt) {
                     },
                     {
                         'src': [ 'examples/blocks/b-images-2/*' ],
-                        'dest': 'examples/publish/sprite2.jpg',
+                        'dest': 'examples/publish/sprite2.jpg'
                     }
 
                 ],

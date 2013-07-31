@@ -26,15 +26,21 @@ module.exports = function (grunt) {
                         'src': [ 'examples/blocks/b-images-1/*' ],
                         'dest': 'examples/publish/sprite1.png',
                         'algorithm': 'alt-diagonal',
-                        'engine': 'gm',
+                        'engine': 'phantomjs',
+                        'padding': 10,
                         'exportOpts': {
                             'format': 'png',
-                            'quality': 90
+                            'quality': 90,
                         }
                     },
                     {
                         'src': [ 'examples/blocks/b-images-2/*' ],
-                        'dest': 'examples/publish/sprite2.jpg'
+                        'dest': 'examples/publish/sprite2.jpg',
+                        'engine': 'gm',
+                        'exportOpts': {
+                            'format': 'jpg',
+                            'quality': 90
+                        }
                     }
 
                 ],

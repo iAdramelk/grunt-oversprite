@@ -1,6 +1,6 @@
 {
     "name": "grunt-oversprite",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Grunt plugin for creating sprites and replacing them in css files",
     "main": "tasks/grunt-oversprite.js",
     "keywords": [

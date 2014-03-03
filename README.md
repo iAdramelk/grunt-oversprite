@@ -98,9 +98,12 @@ Use the following config:
 Changelog
 =========
 
+### 0.1.6
+  - Updated to spritesmith 0.18.0. Now supports pngsmith. thnx to @ jsmarkus .
+
 ### 0.1.5
-  - Updated to spritesmith 0.10. Now supporta padding attribute.
-  - Fix for #5 (Case not ignored then searching for files). Thanks to @orand.
+  - Updated to spritesmith 0.10. Now supports padding attribute.
+  - Fix for #5 (Case not ignored then searching for files). Thanks to @orand .
 
 ### 0.1.4
   - Fixed x offset than using non-default algorithm. Thanks to @diorcety .

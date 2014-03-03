@@ -15,7 +15,7 @@
     },
     "license": "MIT",
     "dependencies": {
-        "spritesmith": "~0.10.0"
+        "spritesmith": "0.18.0"
     },
     "devDependencies": {
         "grunt": "~0.4.1",

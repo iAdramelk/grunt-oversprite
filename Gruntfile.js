@@ -19,24 +19,35 @@ module.exports = function (grunt) {
                 node: true
             }
         },
+        clean: {
+            dist: {
+                options: {
+                    force: true
+                },
+                src: [
+                    'examples/publish/sprite1.png',
+                    'examples/publish/sprite2.jpg',
+                    'examples/publish/style.sprite.css',
+                    'examples/publish/style.sprite.ie.css'
+                ]
+            }
+        },
         oversprite: {
             publish: {
                 spritelist: [
                     {
-                        'src': [ 'examples/blocks/b-images-1/*' ],
+                        'src': ['examples/blocks/b-images-1/*'],
                         'dest': 'examples/publish/sprite1.png',
                         'algorithm': 'alt-diagonal',
-                        'engine': 'phantomjs',
                         'padding': 10,
                         'exportOpts': {
                             'format': 'png',
-                            'quality': 90,
+                            'quality': 90
                         }
                     },
                     {
-                        'src': [ 'examples/blocks/b-images-2/*' ],
+                        'src': ['examples/blocks/b-images-2/*'],
                         'dest': 'examples/publish/sprite2.jpg',
-                        'engine': 'gm',
                         'exportOpts': {
                             'format': 'jpg',
                             'quality': 90
@@ -46,11 +57,11 @@ module.exports = function (grunt) {
                 ],
                 csslist: [
                     {
-                        'src':  'examples/publish/style.css',
+                        'src': 'examples/publish/style.css',
                         'dest': 'examples/publish/style.sprite.css'
                     },
                     {
-                        'src':  'examples/publish/style.ie.css',
+                        'src': 'examples/publish/style.ie.css',
                         'dest': 'examples/publish/style.sprite.ie.css',
                         'base': '../blocks/'
                     }
@@ -61,8 +72,9 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-clean');
 
-    grunt.registerTask("default", "jshint");
+    grunt.registerTask("default", ["jshint", "clean", "oversprite"]);
 
     grunt.loadTasks("tasks");
 
